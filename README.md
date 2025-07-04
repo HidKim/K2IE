@@ -1,5 +1,5 @@
-# Python Code for Survival Permanental Process 
-This library provides survival permanental process (SurvPP) implemented in Tensorflow. SurvPP provides a scalable Bayesian framework for survival analysis with time-varying covariates. For details, see our NeurIPS2023 paper [1].
+# Python Code for Kernel Method-based Kernel Intensity Estimator
+This library provides kernel method-based kernel intensity estimator (K^2IE) implemented in Tensorflow. SurvPP provides a scalable Bayesian framework for survival analysis with time-varying covariates. For details, see our NeurIPS2023 paper [1].
 
 The code was tested on Python 3.10.8, pandas 2.0.1, tensorflow-deps 2.10.0, tensorflow-macos 2.10.0, and tensorflow-metal 0.6.0.
 
