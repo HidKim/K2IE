@@ -1,22 +1,22 @@
 # Python Code for Kernel Method-based Kernel Intensity Estimator
-This library provides kernel method-based kernel intensity estimator (K$$^2$$IE) implemented in Tensorflow. SurvPP provides a scalable Bayesian framework for survival analysis with time-varying covariates. For details, see our NeurIPS2023 paper [1].
+This library provides kernel method-based kernel intensity estimator (K$^2$IE) implemented in Tensorflow. K$^2$IE is a kernel method model to estimate intensity functions with the least squares loss functionals. For details, see our NeurIPS2023 paper [1].
 
 The code was tested on Python 3.10.8, pandas 2.0.1, tensorflow-deps 2.10.0, tensorflow-macos 2.10.0, and tensorflow-metal 0.6.0.
 
 # Installation
 To install latest version:
 ```
-pip install git+https://github.com/HidKim/SurvPP
+pip install git+https://github.com/HidKim/K2IE
 ```
 
 # Basic Usage
-Import SurvPP class:
+Import K$^2$IE class:
 ```
-from HidKim_SurvPP import survival_permanental_process as SurvPP
+from HidKim_K2IE import kernel2_intensity_estimator as k2ie
 ```
-Initialize SurvPP:
+Initialize K$^2$IE:
 ```
-model = SurvPP(kernel='Gaussian', eq_kernel='RFM', eq_kernel_options={'n_rfm':500})
+model = k2ie(kernel='Gaussian', eq_kernel='RFM', eq_kernel_options={'n_rfm':500})
 ```
 - `kernel`: *string, default='Gaussian'* <br> 
   >The kernel function for Gaussian process. Only 'Gaussian' is available now.
@@ -54,13 +54,15 @@ r_est = model.predict(y, conf_int=[0.025,0.5,0.975])
   >The predicted values of hazard function at the specified points.
 
 # Reference
-1. Hideaki Kim. "Survival Permanental Processes for Survival Analysis with Time-Varying Covariates", *Advances in Neural Information Processing Systems 36*, 2023.
+1. Hideaki Kim, Tomoharu Iwata, Akinori Fujino. "K$^2$IE: Kernel Method-based Kernel Intensity Estimators for Inhomogeneous Poisson Processes", *International Conference on Machine Learning*, 2025.
 ```
-@inproceedings{kim2023survival,
-  title={Survival Permanental Processes for Survival Analysis with Time-Varying Covariates},
-  author={Kim, Hideaki},
-  booktitle={Advances in Neural Information Processing Systems 36},
-  year={2023}
+@inproceedings{kim2025k2ie,
+  title={K$^2$IE: Kernel Method-based Kernel Intensity Estimators for Inhomogeneous Poisson Processes},
+  author={Kim, Hideaki and Iwata, Tomoharu and Fujino, Akinori},
+  booktitle={International Conference on Machine Learning},
+  volume={*},
+  pages={*--*},
+  year={2025}
 }
 ``` 
 
