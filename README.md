@@ -1,4 +1,4 @@
-# Python Code for Kernel Method-based Kernel Intensity Estimator
+# Python Code for Kernel Method-based Kernel Intensity Estimator (*Under Construction*)
 This library provides kernel method-based kernel intensity estimator (K<sup>2</sup>IE) implemented in Tensorflow. K<sup>2</sup>IE is a kernel method model to estimate intensity functions with the least squares loss functionals. For details, see our ICML2025 paper [1].
 
 The code was tested on Python 3.10.8, pandas 2.0.1, tensorflow-deps 2.10.0, tensorflow-macos 2.10.0, and tensorflow-metal 0.6.0.
