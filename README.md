@@ -18,6 +18,12 @@ Initialize RFM kernel
 ```
 ker = kernels_rfm(kernel='gaussian', n_rand_feature=500, seed=0, n_dim=2, qmc=True)
 ```
+- `kernel`: *string, default='gaussian'* <br> 
+  >The kernel function. Only 'Gaussian' is available now.
+- `n_rand_feature`:  *int, default=0* <br>
+  >The approach to constructing equivalent kernel. Only 'RFM' is available now.  
+- `eq_kernel_options`:  *dict, default={'n_rfm':500}* <br>
+  >The options for constructing equivalent kernel. `'n_rfm'` specifies the number of feature samples for the random feature map approach to constructing equivalent kernel.
 Import K<sup>2</sup>IE class:
 ```
 from HidKim_K2IE import k2_intensity_estimator
