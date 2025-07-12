@@ -10,13 +10,21 @@ pip install git+https://github.com/HidKim/K2IE
 ```
 
 # Basic Usage
+Import RFM kernel class:
+```
+from HidKim_K2IE import kernels_rfm
+```
+Initialize RFM kernel
+```
+ker = kernels_rfm(kernel='gaussian', n_rand_feature=500, seed=0, n_dim=2, qmc=True)
+```
 Import K<sup>2</sup>IE class:
 ```
-from HidKim_K2IE import kernel2_intensity_estimator as k2ie
+from HidKim_K2IE import k2_intensity_estimator
 ```
 Initialize K<sup>2</sup>IE:
 ```
-model = k2ie(kernel='Gaussian', eq_kernel='RFM', eq_kernel_options={'n_rfm':500})
+k2ie = k2_intensity_estimator(kernel=ker)
 ```
 - `kernel`: *string, default='Gaussian'* <br> 
   >The kernel function for Gaussian process. Only 'Gaussian' is available now.
