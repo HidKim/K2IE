@@ -52,7 +52,7 @@ time = model.fit(d_spk, d_region, a, b)
 
 Evaluate the integral of the squared intensity function over a specified domain (used for closs-validation of hyper-parameter):
 ```
-y = k2ie.predict_integral_squared(region)
+int_sq = k2ie.predict_integral_squared(region)
 ```
 - `region`: *ndarray of shape (n_subregion, dim_points, 2)* <br>
   > The region for integral.  
@@ -61,9 +61,9 @@ y = k2ie.predict_integral_squared(region)
 
 Predict intensity function on specified inputs:
 ```
-r_est = model.predict(y)
+r_est = model.predict(x)
 ```
-- `y`: *ndarray of shape (n_points, dim_points)* <br> 
+- `x`: *ndarray of shape (n_points, dim_points)* <br> 
   >The points on input space for evaluating intensity values.
 - **Return**: *ndarray of shape (n_points,)* <br>
   >The predicted values of intensity function at the specified points.
