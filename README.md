@@ -56,25 +56,17 @@ y = k2ie.predict_integral_squared(region)
 ```
 - `region`: *ndarray of shape (n_subregion, dim_points, 2)* <br>
   > The region for integral.  
-- `d_region`: *ndarray of shape (n_subregion, dim_points, 2)*  <br>
-  >The observation region. e.g.) [ [[0,1],[0,1]], [[1,3],[0,1]] ] represents that there are two adjacent subdomains: one is a unit square, and the other is a rectangle with a length of 2 in the x-direction and a length of 1 in the y-direction.
-- `a`: *float* <br>
-  >The amplitude hyper-parameter for shift-invariant kernel function, or the regularlization hyper-parameter '\gamma' in ICML2025 paper.
-- `b`:  *float*  <br>
-  >The scale hyper-parameter for shift-invariant kernel function. 
 - **Return**: *float* <br>
-  >The execution time.
+  >The evaluated itengral of the squared intensity function.
 
-Predict hazard function on specified covariate values:
+Predict intensity function on specified inputs:
 ```
-r_est = model.predict(y, conf_int=[0.025,0.5,0.975])
+r_est = model.predict(y)
 ```
-- `y`: *ndarray of shape (n_points, dim_covariate)* <br> 
-  >The points on covariate domain for evaluating intensity values.
-- `conf_int`:  *ndarray of shape (n_quantiles,), default=[.025, .5, .975]*  <br>
-  > The quantiles for predicted hazard function.
-- **Return**: *ndarray of shape (n_quantiles, n_points)* <br>
-  >The predicted values of hazard function at the specified points.
+- `y`: *ndarray of shape (n_points, dim_points)* <br> 
+  >The points on input space for evaluating intensity values.
+- **Return**: *ndarray of shape (n_points,)* <br>
+  >The predicted values of intensity function at the specified points.
 
 # Reference
 1. Hideaki Kim, Tomoharu Iwata, Akinori Fujino. "K<sup>2</sup>IE: Kernel Method-based Kernel Intensity Estimators for Inhomogeneous Poisson Processes", *International Conference on Machine Learning*, 2025.
