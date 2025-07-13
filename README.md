@@ -49,7 +49,9 @@ time = model.fit(d_spk, d_region, a, b)
   >The amplitude hyper-parameter for shift-invariant kernel function, or the regularlization hyper-parameter '\gamma' in ICML2025 paper.
 - `b`:  *float*  <br>
   >The scale hyper-parameter for shift-invariant kernel function. 
-
+- **Return**: *float* <br>
+  >The execution time.
+  
 Evaluate the integral of the squared intensity function over a specified domain (used for closs-validation of hyper-parameter):
 ```
 int_sq = k2ie.predict_integral_squared(region)
