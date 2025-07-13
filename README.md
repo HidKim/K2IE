@@ -10,22 +10,23 @@ pip install git+https://github.com/HidKim/K2IE
 ```
 
 # Basic Usage
-Import RFM kernel class:
+Import random Fourier Feature map (RFM) kernel class:
 ```
 from HidKim_K2IE import kernels_rfm
 ```
 Initialize RFM kernel
 ```
-ker = kernels_rfm(kernel='gaussian', n_rand_feature=500, seed=0, n_dim=2, qmc=True)
+ker = kernels_rfm(n_dim, kernel='gaussian', n_rand_feature=500, seed=0, n_dim=2, qmc=True)
 ```
+- `n_dim`:  *int* <br>
+  >The dimensionality of inputs.
 - `kernel`: *string, default='gaussian'* <br> 
-  >The kernel function. Only 'Gaussian' is available now.
+  >The kernel function: 'gaussian', 'laplace', and 'cauchy'.
 - `n_rand_feature`:  *int, default=0* <br>
   >The number of random Fourier features.  
 - `seed`:  *int, default=0* <br>
   >The seed for sampling Fourier features.
-- `n_dim`:  *int* <br>
-  >The seed for sampling Fourier features.
+
 Import K<sup>2</sup>IE class:
 ```
 from HidKim_K2IE import k2_intensity_estimator
@@ -34,27 +35,33 @@ Initialize K<sup>2</sup>IE:
 ```
 k2ie = k2_intensity_estimator(kernel=ker)
 ```
-- `kernel`: *string, default='Gaussian'* <br> 
-  >The kernel function for Gaussian process. Only 'Gaussian' is available now.
-- `eq_kernel`:  *string, default='RFM'* <br>
-  >The approach to constructing equivalent kernel. Only 'RFM' is available now.  
-- `eq_kernel_options`:  *dict, default={'n_rfm':500}* <br>
-  >The options for constructing equivalent kernel. `'n_rfm'` specifies the number of feature samples for the random feature map approach to constructing equivalent kernel.
+- `kernel`: *kernels_rfm instance* <br> 
   
-Fit SurvPP with data:
+Fit K<sup>2</sup>IE with data:
 ```
-time = model.fit(formula, df, set_par, lr=0.05, display=True)
+time = model.fit(d_spk, d_region, a, b)
 ```
-- `formula`: *string in the form 'Surv(Start, Stop, Event) ~ cov1 + cov2 + ...'* <br> 
-  >Identify the column labels of start time (Start), stop time (Stop), event indicator (Event, 1 represents that an event occurred at stop time, and 0 represents that observation is right-censored), and covariates used for survival analysis.
-- `df`:  *pandas.DataFrame*  <br>
-  > The survival data in counting process format. Each row represents a sub-interval for a subject, and should contain start and end time points, event indicator (0/1), and values of covariates in the sub-interval.  
-- `set_par`:  *ndarray of shape (n_candidates, dim_hyperparameter)*  <br>
-  >The set of hyper-parameters for hyper-parameter optimization. The optimization is performed by maximizing the marginal likelihood.
-- `lr`: *float, default=0.05* <br>
-  >The learning rate for gradient descent algorithm (Adam).
-- `display`:  *bool, default=True*  <br>
-  >Display the summary of the data and the fitting. 
+- `d_spk`: *ndarray of shape (n_points, dim_points)* <br>
+  > The training point data.  
+- `d_region`: *ndarray of shape (n_subregion, dim_points, 2)*  <br>
+  >The observation region. e.g.) [ [[0,1],[0,1]], [[1,3],[0,1]] ] represents that there are two adjacent subdomains: one is a unit square, and the other is a rectangle with a length of 2 in the x-direction and a length of 1 in the y-direction.
+- `a`: *float* <br>
+  >The amplitude hyper-parameter for shift-invariant kernel function, or the regularlization hyper-parameter '\gamma' in ICML2025 paper.
+- `b`:  *float*  <br>
+  >The scale hyper-parameter for shift-invariant kernel function. 
+
+Evaluate the integral of the squared intensity function over a specified domain (for closs-validation of hyper-parameter):
+```
+y = k2ie.predict_integral_squared(region)
+```
+- `region`: *ndarray of shape (n_subregion, dim_points, 2)* <br>
+  > The region for integral.  
+- `d_region`: *ndarray of shape (n_subregion, dim_points, 2)*  <br>
+  >The observation region. e.g.) [ [[0,1],[0,1]], [[1,3],[0,1]] ] represents that there are two adjacent subdomains: one is a unit square, and the other is a rectangle with a length of 2 in the x-direction and a length of 1 in the y-direction.
+- `a`: *float* <br>
+  >The amplitude hyper-parameter for shift-invariant kernel function, or the regularlization hyper-parameter '\gamma' in ICML2025 paper.
+- `b`:  *float*  <br>
+  >The scale hyper-parameter for shift-invariant kernel function. 
 - **Return**: *float* <br>
   >The execution time.
 
