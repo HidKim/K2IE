@@ -50,7 +50,7 @@ time = model.fit(d_spk, d_region, a, b)
 - `b`:  *float*  <br>
   >The scale hyper-parameter for shift-invariant kernel function. 
 
-Evaluate the integral of the squared intensity function over a specified domain (for closs-validation of hyper-parameter):
+Evaluate the integral of the squared intensity function over a specified domain (used for closs-validation of hyper-parameter):
 ```
 y = k2ie.predict_integral_squared(region)
 ```
