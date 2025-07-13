@@ -47,11 +47,11 @@ time = model.fit(d_spk, d_region, a, b)
   >The observation region. e.g.) [ [[0,1],[0,1]], [[1,3],[0,1]] ] represents that there are two adjacent subdomains: one is a unit square, and the other is a rectangle with a length of 2 in the x-direction and a length of 1 in the y-direction.
 - `a`: *float* <br>
   >The amplitude hyper-parameter for shift-invariant kernel function, or the regularlization hyper-parameter '\gamma' in ICML2025 paper.
-- `b`:  *float*  <br>
-  >The scale hyper-parameter for shift-invariant kernel function. 
+- `b`:  *ndarray of shape (dim_region,)*  <br>
+  >The scale hyper-parameter for shift-invariant kernel function. If a scalar value is provided as input, it will be converted into a vector with identical elements. 
 - **Return**: *float* <br>
   >The execution time.
-  
+
 Evaluate the integral of the squared intensity function over a specified domain (used for closs-validation of hyper-parameter):
 ```
 int_sq = k2ie.predict_integral_squared(region)
