@@ -50,7 +50,7 @@ time = model.fit(d_spk, d_region, a, b)
 - `a`: *float* <br>
   >The amplitude hyper-parameter for shift-invariant kernel function, or the regularlization hyper-parameter '\gamma' in ICML2025 paper.
 - `b`:  *ndarray of shape (dim_region,)*  <br>
-  >The scale hyper-parameter for shift-invariant kernel function. If a scalar value is provided as input, it will be converted into a vector with identical elements. 
+  >The scale hyper-parameter for shift-invariant kernel function. If a scalar value is provided, the shift-invariant kernel will be regarded as being isotropic. 
 - **Return**: *float* <br>
   >The execution time.
 
