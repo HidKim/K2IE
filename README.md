@@ -16,7 +16,7 @@ from HidKim_K2IE import kernels_rfm
 ```
 Initialize RFM kernel
 ```
-ker = kernels_rfm(n_dim, kernel='gaussian', n_rand_feature=500, seed=0, n_dim=2, qmc=True)
+ker = kernels_rfm(n_dim, kernel='gaussian', n_rand_feature=500, seed=0, qmc=False)
 ```
 - `n_dim`:  *int* <br>
   >The dimensionality of inputs.
@@ -26,6 +26,8 @@ ker = kernels_rfm(n_dim, kernel='gaussian', n_rand_feature=500, seed=0, n_dim=2,
   >The number of random Fourier features.  
 - `seed`:  *int, default=0* <br>
   >The seed for sampling Fourier features.
+- `qmc`:  *bool, default=False* <br>
+  >Quasi-Monte Carlo method is applied to RFM generation.
 
 Import K<sup>2</sup>IE class:
 ```
