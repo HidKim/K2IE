@@ -73,7 +73,7 @@ r_est = model.predict(x)
   >The predicted values of intensity function at the specified points.
 
 # Reference
-1. Hideaki Kim, Tomoharu Iwata, Akinori Fujino. "K<sup>2</sup>IE: Kernel Method-based Kernel Intensity Estimators for Inhomogeneous Poisson Processes", *International Conference on Machine Learning*, 2025.
+1. Hideaki Kim, Tomoharu Iwata, Akinori Fujino. "K<sup>2</sup>IE: Kernel Method-based Kernel Intensity Estimators for Inhomogeneous Poisson Processes", *International Conference on Machine Learning*, 267:30099-30112, 2025.
 ```
 @inproceedings{kim2025k2ie,
   title={K$^2$IE: Kernel Method-based Kernel Intensity Estimators for Inhomogeneous Poisson Processes},
@@ -81,7 +81,6 @@ r_est = model.predict(x)
   booktitle={International Conference on Machine Learning},
   volume={267},
   pages={30099--30112},
-  publisher = {PMLR},
   year={2025}
 }
 ``` 
