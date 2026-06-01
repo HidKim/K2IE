@@ -79,8 +79,9 @@ r_est = model.predict(x)
   title={K$^2$IE: Kernel Method-based Kernel Intensity Estimators for Inhomogeneous Poisson Processes},
   author={Kim, Hideaki and Iwata, Tomoharu and Fujino, Akinori},
   booktitle={International Conference on Machine Learning},
-  volume={*},
-  pages={*--*},
+  volume={267},
+  pages={30099--30112},
+  publisher = {PMLR},
   year={2025}
 }
 ``` 
